@@ -296,7 +296,7 @@ export default function PostDetailPage({ params }: PostDetailPageProps) {
             )}
 
             {/* 액션 버튼들 */}
-            <div className="flex gap-4 justify-center">
+            <div className="flex gap-4 justify-center whitespace-pre-line">
               <button
                 onClick={copyToClipboard}
                 className="flex items-center gap-3 bg-gradient-to-r from-sky-600 to-indigo-600 text-white px-6 py-3 rounded-xl font-semibold hover:from-sky-700 hover:to-indigo-700 transition-all shadow-lg"
@@ -314,7 +314,7 @@ export default function PostDetailPage({ params }: PostDetailPageProps) {
                     d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
                   />
                 </svg>
-                {copySuccess ? "복사 완료!" : "본문 복사하기"}
+                {copySuccess ? "복사 완료!" : "본문 \n복사하기"}
               </button>
 
               {/* 에브리타임 앱 열기 버튼 */}
