@@ -183,7 +183,7 @@ export async function POST(req: NextRequest) {
             {
               role: "system",
               content: `JSON: {"exact_keywords":[], "expanded_keywords":[], "location_keywords":[], "time_keywords":[]}
-    도서관: 신중도→연세삼성학술정보관, 중도→중앙도서관(신촌)/언더우드기념도서관(송도), 언기도→언더우드기념도서관
+    도서관: 신중도→연세삼성학술정보관, 중도→중앙도서관(신촌)/언더우드 기념 도서관(송도), 언기도→언더우드 기념 도서관
     시간: 어제,오늘,지난주,이번주,6월,5월`,
             },
             { role: "user", content: message },
