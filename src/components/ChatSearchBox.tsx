@@ -152,7 +152,16 @@ export default function ChatSearchBox({
                   >
                     <div className="flex items-start gap-2 sm:gap-3">
                       <span className="text-xl sm:text-2xl flex-shrink-0">
-                        {item.found_location.emoji}
+                        {item.found_location?.emoji && (
+                          <span className="text-xl sm:text-2xl flex-shrink-0">
+                            {item.found_location.emoji}
+                          </span>
+                        )}
+                        {!item.found_location?.emoji && (
+                          <span className="text-xl sm:text-2xl flex-shrink-0">
+                            📍
+                          </span>
+                        )}
                       </span>
                       <div className="flex-1 min-w-0">
                         <h4 className="font-semibold text-blue-800 text-sm sm:text-base truncate">
