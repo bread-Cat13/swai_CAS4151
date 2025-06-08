@@ -45,7 +45,7 @@ export default function Navbar() {
   }, [isMobileMenuOpen]);
 
   const handleNavigation = (href: string) => {
-    console.log("🎯 handleNavigation 실행:", href);
+    // console.log("🎯 handleNavigation 실행:", href);
     setIsMobileMenuOpen(false);
 
     // 외부 페이지 (게시판 등)
@@ -68,13 +68,47 @@ export default function Navbar() {
       return;
     }
 
+    // 메인 페이지에서 해시 변경
     history.replaceState(null, "", href);
+
+    // 강제로 hashchange 이벤트 발생 - 이 부분이 핵심!
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
 
     // 메인 페이지에서 해시 이동
     setTimeout(() => {
       scrollToHash(href);
     }, 50);
   };
+  //   console.log("🎯 handleNavigation 실행:", href);
+  //   setIsMobileMenuOpen(false);
+
+  //   // 외부 페이지 (게시판 등)
+  //   if (href.startsWith("/")) {
+  //     router.push(href);
+  //     if (href === "/boards") {
+  //       setTimeout(() => {
+  //         window.scrollTo({ top: 0, behavior: "smooth" });
+  //       }, 100);
+  //     }
+  //     return;
+  //   }
+
+  //   // 현재 페이지가 메인이 아닌 경우 메인으로 이동
+  //   if (pathname !== "/") {
+  //     router.push(`/${href}`);
+  //     setTimeout(() => {
+  //       scrollToHash(href);
+  //     }, 100);
+  //     return;
+  //   }
+
+  //   history.replaceState(null, "", href);
+
+  //   // 메인 페이지에서 해시 이동
+  //   setTimeout(() => {
+  //     scrollToHash(href);
+  //   }, 50);
+  // };
 
   return (
     <>

@@ -26,11 +26,9 @@ export const scrollToHash = (hash: string) => {
   setTimeout(() => {
     switch (elementId) {
       case "home":
-        window.scrollTo({ top: 0, behavior: "smooth" });
-        break;
       case "search":
-      case "register":
-        scrollToElement("home", NAVBAR_HEIGHT);
+      case "register": // 모두 같은 home 섹션으로!
+        window.scrollTo({ top: 0, behavior: "smooth" });
         break;
       default:
         scrollToElement(elementId, NAVBAR_HEIGHT);

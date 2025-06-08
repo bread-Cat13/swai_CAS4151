@@ -2,43 +2,56 @@
 import { useState, useEffect } from "react";
 import LostItemForm from "./LostItemForm";
 import ChatSearchBox from "./ChatSearchBox";
-// import { scrollToHash } from "@/utils/scroll";
 
 export default function HeroSection() {
-  const [activeTab, setActiveTab] = useState<"register" | "search">("register");
+  // 초기 상태를 더 명확하게 설정
+  const [activeTab, setActiveTab] = useState<"register" | "search">(() => {
+    if (typeof window === "undefined") return "register"; // 기본값을 register로 변경
+
+    const hash = window.location.hash;
+    // console.log("🎯 초기 해시:", hash);
+
+    // #search일 때만 search, 나머지는 모두 register
+    return hash === "#search" ? "search" : "register";
+  });
+
   const [selectedCampus, setSelectedCampus] = useState<"신촌" | "송도">("신촌");
 
-  // 해시 기반 탭 설정 및 스크롤
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash;
+      // console.log("🔄 HeroSection 해시 변경:", hash);
 
+      // #search일 때만 찾기 탭으로 변경
       if (hash === "#search") {
+        // console.log("✅ 찾기 탭으로 변경");
         setActiveTab("search");
-        // // 컴포넌트 렌더링 후 스크롤
-        // setTimeout(() => scrollToHash("#home"), 100);
-      } else if (hash === "#register") {
-        setActiveTab("register");
-        // setTimeout(() => scrollToHash("#home"), 100);
       } else {
+        // #register, #home, 빈 해시, 기타 모든 경우는 등록 탭
+        // console.log("✅ 등록 탭으로 변경");
         setActiveTab("register");
       }
     };
 
-    // 초기 로드 시 처리
+    // 컴포넌트 마운트 시 즉시 실행
     handleHashChange();
 
-    // 해시 변경 이벤트 리스너
     window.addEventListener("hashchange", handleHashChange);
-
     return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
   // 탭 클릭 핸들러
   const handleTabClick = (tab: "register" | "search") => {
+    // console.log("🎯 탭 클릭:", tab);
     setActiveTab(tab);
-    // window.location.hash = tab === "search" ? "#search" : "#register";
-    history.replaceState(null, "", tab === "search" ? "#search" : "#register");
+    const newHash = tab === "register" ? "#register" : "#search";
+
+    // pushState 대신 replaceState 사용
+    window.history.replaceState(null, "", newHash);
+    // console.log("🔄 URL 업데이트:", newHash);
+
+    // 강제로 hashchange 이벤트 발생
+    window.dispatchEvent(new HashChangeEvent("hashchange"));
   };
 
   return (
