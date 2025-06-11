@@ -23,27 +23,29 @@ export default function PostDetailPage({ params }: PostDetailPageProps) {
   const [loading, setLoading] = useState(true);
   const [copySuccess, setCopySuccess] = useState(false);
 
+  //
+
   const openEverytimeApp = () => {
-    // 에브리타임 앱 딥링크
     const everytimeDeepLink = "everytime://";
     const everytimeWebUrl = "https://everytime.kr";
-
-    // 모바일 환경 감지
     const isMobile =
       /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
         navigator.userAgent
       );
 
     if (isMobile) {
-      // 모바일에서 앱 열기 시도
+      const timeout = setTimeout(() => {
+        // 앱이 열리지 않으면 웹사이트로 이동
+        window.location.href = everytimeWebUrl;
+      }, 2000); // 2초 정도로 줄이는 것도 UX에 좋음
+
+      // try opening the app
       window.location.href = everytimeDeepLink;
 
-      // 앱이 설치되지 않은 경우를 대비해 3초 후 웹사이트로 이동
-      setTimeout(() => {
-        window.open(everytimeWebUrl, "_blank");
-      }, 3000);
+      // iOS 인앱 브라우저 등에서는 강제로 timeout을 실행하지 않도록 clear
+      window.addEventListener("pagehide", () => clearTimeout(timeout));
+      window.addEventListener("blur", () => clearTimeout(timeout)); // 앱 전환 시
     } else {
-      // 데스크톱에서는 웹사이트 열기
       window.open(everytimeWebUrl, "_blank");
     }
   };
