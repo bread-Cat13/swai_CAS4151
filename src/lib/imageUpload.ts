@@ -16,7 +16,7 @@ export async function uploadImage(file: File): Promise<string | null> {
     const fileName = `${Date.now()}-${Math.random()
       .toString(36)
       .substring(2)}.${fileExt}`;
-    const filePath = `lost-items/${fileName}`;
+    const filePath = fileName;
 
     console.log("업로드 경로:", filePath);
 
