@@ -10,8 +10,8 @@ Node.js 설치가 완료되면, 아래의 순서에 따라 프로젝트를 실�
 
 1. 저장소를 클론하거나 GitHub에서 ZIP 파일을 다운로드하여 압축을 해제합니다.
 
-'''git clone https://github.com/bread-Cat13/swai_CAS4151.git
-cd swai_CAS4151'''
+````git clone https://github.com/bread-Cat13/swai_CAS4151.git
+cd swai_CAS4151```
 
 2. 터미널에서 프로젝트 루트 디렉토리로 이동한 후 다음 명령어로 필요한 패키지를 설치합니다.
 
@@ -21,8 +21,8 @@ cd swai_CAS4151'''
 
 `.env.local` 파일 예시는 다음과 같습니다. (※ 실제 값은 이메일로 전달되었습니다.)
 
-NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co  
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key  
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
 PPLX_API_KEY=your_openai_api_key
 
 4. 환경 변수를 설정한 후, 아래 명령어로 개발 서버를 실행합니다.
@@ -40,3 +40,4 @@ http://localhost:3000
 - 이미지 출력, 등록 폼, 검색 탭 전환 등이 정상적으로 동작해야 합니다.
 
 본 실행 과정만으로 동일한 환경에서 문제없이 작동하도록 구성되어 있으며, 별도의 추가 설정 없이 정상 실행됩니다.
+````
