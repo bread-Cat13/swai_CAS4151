@@ -10,12 +10,12 @@ Node.js 설치가 완료되면, 아래의 순서에 따라 프로젝트를 실�
 
 1. 저장소를 클론하거나 GitHub에서 ZIP 파일을 다운로드하여 압축을 해제합니다.
 
-git clone https://github.com/bread-Cat13/swai_CAS4151.git
-cd swai_CAS4151
+'git clone https://github.com/bread-Cat13/swai_CAS4151.git'
+'cd swai_CAS4151'
 
 2. 터미널에서 프로젝트 루트 디렉토리로 이동한 후 다음 명령어로 필요한 패키지를 설치합니다.
 
-npm install
+'npm install'
 
 3. 환경 변수 파일을 설정합니다. 루트 디렉토리(swai_CAS4151 폴더 아래)에 `.env.local` 파일을 생성하고, 이메일로 전달된 값을 그대로 붙여넣습니다.
 
