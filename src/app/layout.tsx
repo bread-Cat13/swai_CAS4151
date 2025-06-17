@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="ko">
+    <html lang="ko" className={inter.className}>
       <head>
         <link
           rel="apple-touch-icon"
@@ -102,7 +102,7 @@ export default function RootLayout({
           strategy="beforeInteractive"
         />
       </head>
-      <body className={inter.className}>
+      <body className="bg-white text-black">
         <Navbar />
         <main className="pt-20">{children}</main>
       </body>
